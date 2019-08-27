@@ -67,4 +67,4 @@ columns.extend(['Total Wins', 'Total Losses', 'Win %'])
 
 df = pd.DataFrame(df, columns=columns)
 
-df.to_csv('/Users/keenan/PycharmProjects/Dump/Season_Wins_'+str(league_id)+'.csv')
+df.to_csv('Season_Wins_'+str(league_id)+'.csv')
