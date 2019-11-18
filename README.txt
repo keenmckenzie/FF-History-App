@@ -12,4 +12,6 @@ $ pip install -r requirements.txt
 4) Run with
 $ python run.py
 
+5) Check if its working with
+Go to localhost:5000/leagueHistory/test
  

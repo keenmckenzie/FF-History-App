@@ -5,7 +5,7 @@ mod = Blueprint('leagueHistory', __name__)
 
 @mod.route('/test')
 def getStuff():
-   return '{"result": "Showing Rossella how it works"}'
+   return '{"result": "Hitting leagueHistory Blueprint"}'
 
 @mod.route('/years/<int:league_id>', methods=['GET'])
 def getYearsLeagueId(league_id):
