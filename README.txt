@@ -1,5 +1,17 @@
-ESPN API 
+TO RUN:
 
-This repo will generate a .csv file named 'Season_Wins_(leagueID)' in the file path specified in the last line of the Win&Loss file
+1) Create virtual environment with 
+$ virtualenv venv
 
+2) Activate virtual environment with
+$ source venv/bin/activate 
 
+3) Install requirements with
+$ pip install -r requirements.txt
+
+4) Run with
+$ python run.py
+
+5) Check if its working with
+Go to localhost:5000/leagueHistory/test
+ 
