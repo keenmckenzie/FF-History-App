@@ -1,17 +1,16 @@
 TO RUN:
 
-1) Create virtual environment with 
+1) Create virtual environment:
 $ virtualenv venv
 
-2) Activate virtual environment with
+2) Activate virtual environment:
 $ source venv/bin/activate 
 
-3) Install requirements with
+3) Install requirements:
 $ pip install -r requirements.txt
 
-4) Run with
+4) Run:
 $ python run.py
 
-5) Check if its working with
-Go to localhost:5000/leagueHistory/test
+5) Go to localhost:5000/leagueHistory/test
  
