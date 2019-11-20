@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from models import getYearsWithLeagueId, getOwnersWithLeagueId
+from .models import getYearsWithLeagueId, getOwnersWithLeagueId
 
 mod = Blueprint('leagueHistory', __name__)
 
