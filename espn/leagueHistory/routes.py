@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from .models import getYearsWithLeagueId, getOwnersWithLeagueId, getSeasonData
+from .models import getYearsWithLeagueId, getOwnersWithLeagueId, getSeasonData, getAllTimeData
 
 mod = Blueprint('leagueHistory', __name__)
 
@@ -21,3 +21,8 @@ def leagueOwners(league_id):
 def getSeason(league_id, year):
   season_data = getSeasonData(league_id, year)
   return jsonify({'owners': season_data})
+
+@mod.route('/alltime/<int:league_id>', methods=['GET'])
+def getAlltime(league_id):
+  alltime_data = getAllTimeData(league_id)
+  return jsonify({'owners': alltime_data})
