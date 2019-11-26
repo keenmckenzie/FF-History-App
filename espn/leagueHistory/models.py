@@ -24,6 +24,7 @@ def getOwnersWithLeagueId(league_id):
    return league_owners
 
 def getSeasonData(league_id,year):
+   league_owners = getOwnersWithLeagueId(league_id);
    season_data = []
    url = "https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/" + str(league_id) + "?seasonId=" + str(year)
    r = requests.get(url, params={"view": "mTeam"})
@@ -34,7 +35,9 @@ def getSeasonData(league_id,year):
       overall = record['overall']
       abbrev = team['abbrev']
       owner_id = team['owners']
-      team_data = {'abbrev': abbrev, 'owner_id': owner_id, 'record': overall}
+      name = league_owners[owner_id[0]]
+      team_data = {'abbrev': abbrev, 'name': name, 'owner_id': owner_id, 'record': overall}
+      ##team_data = {'abbrev': abbrev, 'owner_id': owner_id, 'record': overall}
       if owner_id not in season_data:
           season_data.append(team_data)
    return season_data
