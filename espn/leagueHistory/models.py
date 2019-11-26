@@ -51,13 +51,20 @@ def getAllTimeData(league_id):
       for team in season_data:
           owner_id = team["owner_id"]
           if owner_id not in alltime_data:
-              alltime_data[owner_id] = {"name": team["name"], "wins": team["record"]["wins"], "losses": team["record"]["losses"], "ties": team["record"]["ties"], "points": team["record"]["pointsFor"]}
-              print("Added an owner: ", team["name"])
+              alltime_data[owner_id] = {
+                  "name": team["name"], 
+                  "wins": team["record"]["wins"], 
+                  "losses": team["record"]["losses"], 
+                  "ties": team["record"]["ties"], 
+                  "points": team["record"]["pointsFor"], 
+                   "yearsActive": 1}
+              ##print("Added an owner: ", team["name"])
           else: 
               alltime_data[owner_id]["wins"] +=  team["record"]["wins"]
               alltime_data[owner_id]["losses"] +=  team["record"]["losses"]
               alltime_data[owner_id]["ties"] +=  team["record"]["ties"]
               alltime_data[owner_id]["points"] +=  team["record"]["pointsFor"]
+              alltime_data[owner_id]["yearsActive"] += 1
    return alltime_data
 
 
