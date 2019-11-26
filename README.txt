@@ -12,5 +12,5 @@ $ pip install -r requirements.txt
 4) Run:
 $ python3 run.py
 
-5) Go to localhost:5000/leagueHistory/test & localhost:5000/setup/test to see if both blueprints are working
+5) Go to localhost:5000/leagueHistory/test & localhost:5000/leagueHistory/alltime/1107328 to test
  
