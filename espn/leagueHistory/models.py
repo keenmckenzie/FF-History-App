@@ -74,6 +74,29 @@ def getAllTimeData(league_id):
               alltime_data[owner_id]["championships"] += champ_boolean
    return alltime_data
 
+def getRecords(league_id):
+  years = getYearsWithLeagueId(league_id)
+  records = {}
+  most_wins = {"team_name": "null", "wins": 0}
+  most_points = {"team_name": "null", "points": 0}
+  least_wins = {"team_name": "null", "wins": 0}
+  least_points = {"team_name": "null", "points": 0}
+  for year in years:
+     season_data = getSeasonData(league_id, year)
+     for team in season_data:
+        wins = team["record"]["wins"]
+        points = team["record"]["pointsFor"]
+        if ( wins > most_wins["wins"] ):
+            most_wins = {"team_name": team["name"], "wins": wins}
+        if ( points > most_points["points"] ):
+            most_points = {"team_name": team["name"], "points": points}
+        if ( wins < least_wins["wins"] or least_wins["team_name"] == "null" ):
+            least_wins = {"team_name": team["name"], "wins": wins} 
+        if ( points < least_points["points"] or least_points["team_name"] == "null" ):
+            least_points = {"team_name": team["name"], "points": points}
+  records = {"most_wins": most_wins, "least_wins": least_wins, "most_points": most_points, "least_points": least_points}
+  return records
+
 
 
 
