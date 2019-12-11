@@ -13,4 +13,18 @@ $ pip install -r requirements.txt
 $ python3 run.py
 
 5) Go to localhost:5000/leagueHistory/test & localhost:5000/leagueHistory/alltime/1107328 to test
- 
+
+
+TO TEST:
+
+1) Run:
+$ coverage run -m unittest tests
+
+2) Kill application
+
+3) Run:
+$ coverage report 
+OR
+$ coverage html (saved in project directory)
+
+  
