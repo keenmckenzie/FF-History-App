@@ -1,16 +1,16 @@
 import requests
 from flask import jsonify
 
-def getYearsWithLeagueId(league_id):
+def get_years_with_league_id(league_id):
    url = "https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/" + str(league_id)  + "?seasonId=2018"
    teamView_json = requests.get(url, params={"view": "mTeam"}).json()[0]
    years = teamView_json['status']['previousSeasons']
    years.append(2018)
    return years
 
-def getOwnersWithLeagueId(league_id):
+def get_owners_with_league_id(league_id):
    league_owners =  {}
-   years = getYearsWithLeagueId(league_id)
+   years = get_years_with_league_id(league_id)
    for year in years:
         url = "https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/" + str(league_id) + "?seasonId=" + str(year)
         r = requests.get(url, params={"view": "mTeam"})
@@ -23,8 +23,8 @@ def getOwnersWithLeagueId(league_id):
                 league_owners[owner_id] = name
    return league_owners
 
-def getSeasonData(league_id,year):
-   league_owners = getOwnersWithLeagueId(league_id)
+def get_season_data(league_id, year):
+   league_owners = get_owners_with_league_id(league_id)
    season_data = []
    url = "https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/" + str(league_id) + "?seasonId=" + str(year)
    r = requests.get(url, params={"view": "mTeam"})
@@ -43,12 +43,12 @@ def getSeasonData(league_id,year):
           season_data.append(team_data)
    return season_data
 
-def getAllTimeData(league_id):
-   years = getYearsWithLeagueId(league_id)
+def get_all_time_data(league_id):
+   years = get_years_with_league_id(league_id)
    alltime_data = {}
    for year in years:
       print("Getting data for: ", str(year))
-      season_data = getSeasonData(league_id, year)
+      season_data = get_season_data(league_id, year)
       for team in season_data:
           owner_id = team["owner_id"]
           champ_boolean = 0
@@ -74,15 +74,15 @@ def getAllTimeData(league_id):
               alltime_data[owner_id]["championships"] += champ_boolean
    return alltime_data
 
-def getRecords(league_id):
-  years = getYearsWithLeagueId(league_id)
+def get_records(league_id):
+  years = get_years_with_league_id(league_id)
   records = {}
   most_wins = {"team_name": "null", "wins": 0}
   most_points = {"team_name": "null", "points": 0}
   least_wins = {"team_name": "null", "wins": 0}
   least_points = {"team_name": "null", "points": 0}
   for year in years:
-     season_data = getSeasonData(league_id, year)
+     season_data = get_season_data(league_id, year)
      for team in season_data:
         wins = team["record"]["wins"]
         points = team["record"]["pointsFor"]
