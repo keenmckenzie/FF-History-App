@@ -22,7 +22,7 @@ def getSeason(league_id, year):
   season_data = get_season_data(league_id, year)
   return jsonify({'owners': season_data})
 
-@mod.route('/alltime/<int:league_id>', methods=['GET'])
+@mod.route('/performance/<int:league_id>', methods=['GET'])
 def getAlltime(league_id):
   alltime_data = get_all_time_data(league_id)
   return jsonify({'owners': alltime_data})
