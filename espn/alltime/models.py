@@ -149,8 +149,11 @@ def get_alltime(league_id):
    regular_season = get_all_season_data(league_id, years)
    playoffs = get_playoff_performance(league_id, years)
    for owner in regular_season:
-      wins = regular_season[owner]['wins'] + playoffs[owner]['wins']
-      losses = regular_season[owner]['losses'] + playoffs[owner]['losses']      
+      try:
+        wins = regular_season[owner]['wins'] + playoffs[owner]['wins']
+        losses = regular_season[owner]['losses'] + playoffs[owner]['losses']
+      except KeyError:
+        print("No playoff data for: " + regular_season[owner]['name'])
       alltime_performance[owner] = {
         "name": regular_season[owner]['name'],
         "wins": wins,
