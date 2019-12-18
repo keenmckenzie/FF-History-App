@@ -50,12 +50,12 @@ def get_count_regular_season_games(league_id, year):
    ties = record_json['ties']
    return wins + losses + ties
 
-def get_playoff_performance(league_id, years=None):
+def get_postseason_performance(league_id, years=None):
    if years is None:
      years = get_years(league_id)
    team_ids = get_teams_with_league_id(league_id, years)
    owners = get_owners_with_league_id(league_id, years)
-   playoff_record = {}
+   postseason_record = {}
    total_postseason_games = 0
    for year in years:
       regular_season_games = get_count_regular_season_games(league_id, year)
@@ -74,23 +74,23 @@ def get_playoff_performance(league_id, years=None):
                 loser_team_id = game['home']['teamId']
             winner_owner_id = team_ids[winner_team_id]
             loser_owner_id = team_ids[loser_team_id]
-            if winner_owner_id not in playoff_record:
-                playoff_record[winner_owner_id] = {
+            if winner_owner_id not in postseason_record:
+                postseason_record[winner_owner_id] = {
                     "name": owners[winner_owner_id],
                     "wins": 1,
                     "losses": 0
                 }
             else:
-               playoff_record[winner_owner_id]["wins"] += 1
-            if loser_owner_id not in playoff_record:
-                playoff_record[loser_owner_id] = {
+               postseason_record[winner_owner_id]["wins"] += 1
+            if loser_owner_id not in postseason_record:
+                postseason_record[loser_owner_id] = {
                     "name": owners[loser_owner_id],
                     "wins": 0,
                     "losses": 1
                 }
             else:
-                playoff_record[loser_owner_id]["losses"] += 1
-   return playoff_record
+                postseason_record[loser_owner_id]["losses"] += 1
+   return postseason_record
 
 def get_one_season_data(league_id, year):
    league_owners = get_owners_with_league_id(league_id)
@@ -147,13 +147,13 @@ def get_alltime(league_id):
    years = get_years(league_id)
    alltime_performance = {}
    regular_season = get_all_season_data(league_id, years)
-   playoffs = get_playoff_performance(league_id, years)
+   postseason = get_postseason_performance(league_id, years)
    for owner in regular_season:
       try:
-        wins = regular_season[owner]['wins'] + playoffs[owner]['wins']
-        losses = regular_season[owner]['losses'] + playoffs[owner]['losses']
+        wins = regular_season[owner]['wins'] + postseason[owner]['wins']
+        losses = regular_season[owner]['losses'] + postseason[owner]['losses']
       except KeyError:
-        print("No playoff data for: " + regular_season[owner]['name'])
+        print("No postseason data for: " + regular_season[owner]['name'])
       alltime_performance[owner] = {
         "name": regular_season[owner]['name'],
         "wins": wins,

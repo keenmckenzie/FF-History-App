@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from .models import get_years, get_alltime
+from .models import get_alltime
 
 mod = Blueprint('alltime', __name__)
 

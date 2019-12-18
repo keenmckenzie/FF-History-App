@@ -1,11 +1,11 @@
 from flask import Blueprint, jsonify
-from .models import get_owners_with_league_id, get_years_with_league_id, get_teams_with_league_id, get_playoff_performance
+from .models import get_owners_with_league_id, get_teams_with_league_id, get_postseason_performance
 
-mod = Blueprint('playoffHistory', __name__)
+mod = Blueprint('postseasonHistory', __name__)
 
 @mod.route('/test')
 def test():
-   return {'result': 'Hitting playoff blueprint'}
+   return {'result': 'Hitting postseason blueprint'}
 
 @mod.route('/owners/<int:league_id>')
 def owners(league_id):
@@ -19,6 +19,6 @@ def teams(league_id):
 
 @mod.route('/performance/<int:league_id>')
 def perform(league_id):
-   test = get_playoff_performance(league_id)
+   test = get_postseason_performance(league_id)
    return test
 
