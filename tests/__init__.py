@@ -1,6 +1,6 @@
 import unittest
 from espn import app
-from espn.alltime.league import League
+from espn.league import League
 
 
 class TestRegularSeasonPages(unittest.TestCase):
