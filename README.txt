@@ -1,4 +1,4 @@
-TO RUN:
+To RUN:
 
 1) Create virtual environment:
 $ python3 venv .venv
@@ -12,7 +12,7 @@ $ pip install -r requirements.txt
 4) Run:
 $ python3 run.py
 
-5) Go to localhost:5000/leagueHistory/test & localhost:5000/leagueHistory/alltime/1107328 to test
+5) Go to localhost:5000/alltime/performance/1107328 & localhost:5000/alltime/performance/1107328
 
 
 TO TEST:
