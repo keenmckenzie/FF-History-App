@@ -12,7 +12,7 @@ $ pip install -r requirements.txt
 4) Run:
 $ python3 run.py
 
-5) Go to localhost:5000/alltime/performance/1107328 & localhost:5000/alltime/performance/1107328
+5) Go to localhost:5000/alltime/performance/1107328 & localhost:5000/regularSeason/performance/1107328
 
 
 TO TEST:
