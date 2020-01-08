@@ -7,7 +7,7 @@ def get_postseason_performance(league):
     postseason_record = {}
     total_postseason_games = 0
     for year in league.years:
-        league.get_schedule_settings(year)
+        league.set_schedule_settings(year)
         url = "https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/" + str(league.id) + "?seasonId=" + str(year)
         r = requests.get(url, params={"view": "mMatchup"})
         json = r.json()[0]

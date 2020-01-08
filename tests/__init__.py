@@ -47,7 +47,6 @@ class TestLeagueObject(unittest.TestCase):
 
     def test_playoffCount(self):
         testLeague = League(1107328)
-        scheduleSettings = testLeague.get_schedule_settings(2018)
         playoffCount = testLeague.playoffTeamCount
         self.assertEqual(playoffCount, 6)
 
