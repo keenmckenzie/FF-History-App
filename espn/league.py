@@ -1,6 +1,7 @@
 import requests
 from espn.season import Season
 
+
 class League:
     def __init__(self, league_id):
         self.id = league_id
@@ -22,7 +23,8 @@ class League:
         def get_owners():
             owners = {}
             for year in self.years:
-                url = "https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/" + str(league_id) + "?seasonId=" + str(year)
+                url = "https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/" + str(league_id) + "?seasonId=" + str(
+                    year)
                 r = requests.get(url, params={"view": "mTeam"})
                 json = r.json()[0]
                 members = json['members']
@@ -38,7 +40,8 @@ class League:
         def get_team_ids():
             team_ids = {}
             for year in self.years:
-                url = "https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/" + str(league_id) + "?seasonId=" + str(year)
+                url = "https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/" + str(league_id) + "?seasonId=" + str(
+                    year)
                 r = requests.get(url, params={"view": "mTeam"})
                 json = r.json()[0]
                 teams = json['teams']
@@ -61,24 +64,7 @@ class League:
         self.playoffTeamCount = schedule_settings['playoffTeamCount']
         self.playoffMatchupLength = schedule_settings['playoffMatchupPeriodLength']
 
-    def set_playoff_teams(self, year):
-        url = "https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/" + str(self.id) + "?seasonId=" + str(year)
-        r = requests.get(url, params={"view": "mTeam"})
-        json = r.json()[0]
-        teams = json['teams']
-        playoff_teams = {}
-        for team in teams:
-            final_rank = team['rankCalculatedFinal']
-            if final_rank <= self.playoffTeamCount:
-                owner_id = team['owners'][0]
-                playoff_teams[owner_id] = self.owners[owner_id]
-        self.playoffTeams = playoff_teams
-
     def set_season(self, year):
         if year not in self.seasons:
             season_class = Season(self, year)
             self.seasons[year] = season_class
-
-
-
-

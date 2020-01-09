@@ -13,12 +13,14 @@ def get_alltime(league_id):
         try:
             wins = regular_season[owner]['wins'] + postseason[owner]['wins']
             losses = regular_season[owner]['losses'] + postseason[owner]['losses']
+            alltime_performance[owner] = {
+                "name": regular_season[owner]['name'],
+                "wins": wins,
+                "losses": losses,
+                "yearsActive": regular_season[owner]['yearsActive']
+            }
+
         except KeyError:
             print("No postseason data for: " + regular_season[owner]['name'])
-        alltime_performance[owner] = {
-            "name": regular_season[owner]['name'],
-            "wins": wins,
-            "losses": losses,
-            "yearsActive": regular_season[owner]['yearsActive']
-        }
+
     return {'owners': alltime_performance}

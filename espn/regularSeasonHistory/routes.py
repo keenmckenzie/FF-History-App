@@ -5,11 +5,6 @@ from espn.league import League
 mod = Blueprint('regularSeasonHistory', __name__)
 
 
-@mod.route('/test')
-def getStuff():
-    return '{"result": "Hitting regularSeasonHistory Blueprint"}'
-
-
 @mod.route('/season/<int:league_id>/<int:year>', methods=['GET'])
 def getSeason(league_id, year):
     league = League(league_id)
