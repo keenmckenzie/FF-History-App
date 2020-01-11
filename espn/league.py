@@ -1,6 +1,5 @@
-from builtins import str
-
 import requests
+from espn.season import Season
 
 
 class League:
@@ -9,6 +8,8 @@ class League:
         self.regularSeasonLength = 0
         self.playoffTeamCount = 0
         self.playoffMatchupLength = 0
+        self.playoffTeams = {}
+        self.seasons = {}
 
         def get_years_active():
             url = "https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/" + str(league_id) + "?seasonId=2018"
@@ -22,7 +23,8 @@ class League:
         def get_owners():
             owners = {}
             for year in self.years:
-                url = "https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/" + str(league_id) + "?seasonId=" + str(year)
+                url = "https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/" + str(league_id) + "?seasonId=" + str(
+                    year)
                 r = requests.get(url, params={"view": "mTeam"})
                 json = r.json()[0]
                 members = json['members']
@@ -38,7 +40,8 @@ class League:
         def get_team_ids():
             team_ids = {}
             for year in self.years:
-                url = "https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/" + str(league_id) + "?seasonId=" + str(year)
+                url = "https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/" + str(league_id) + "?seasonId=" + str(
+                    year)
                 r = requests.get(url, params={"view": "mTeam"})
                 json = r.json()[0]
                 teams = json['teams']
@@ -51,7 +54,7 @@ class League:
 
         self.teamIds = get_team_ids()
 
-    def get_schedule_settings(self, year):
+    def set_schedule_settings(self, year):
         url = "https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/" + str(self.id) + "?seasonId=" + str(
             year)
         r = requests.get(url, params={"view": "mSettings"})
@@ -61,3 +64,7 @@ class League:
         self.playoffTeamCount = schedule_settings['playoffTeamCount']
         self.playoffMatchupLength = schedule_settings['playoffMatchupPeriodLength']
 
+    def set_season(self, year):
+        if year not in self.seasons:
+            season_class = Season(self, year)
+            self.seasons[year] = season_class
