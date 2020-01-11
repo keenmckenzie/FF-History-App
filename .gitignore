@@ -3,4 +3,5 @@
 venv/
 .venv/
 *.pyc
-.creds
+creds.py
+
