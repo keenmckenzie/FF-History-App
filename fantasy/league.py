@@ -1,5 +1,5 @@
 import requests
-from espn.season import Season
+from fantasy.season import Season
 
 
 class League:

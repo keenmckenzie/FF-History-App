@@ -13,4 +13,5 @@ def yahoo_login():
 @mod.route('/login/redirect')
 def redirect():
     redirect_response = request.url
-    return auth(redirect_response)
+    r =  auth(redirect_response)
+    return r.content

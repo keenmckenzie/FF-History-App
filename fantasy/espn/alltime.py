@@ -1,7 +1,7 @@
 import requests
-from espn.league import League
-from espn.postseasonHistory.models import get_postseason_performance
-from espn.regularSeasonHistory.models import get_all_season_data
+from fantasy.league import League
+from fantasy.espn.playoffs import get_postseason_performance
+from fantasy.espn.regularSeason import get_all_season_data
 
 
 def get_alltime(league_id):
@@ -24,3 +24,4 @@ def get_alltime(league_id):
             print("No postseason data for: " + regular_season[owner]['name'])
 
     return {'owners': alltime_performance}
+

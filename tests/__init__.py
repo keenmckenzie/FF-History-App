@@ -1,7 +1,7 @@
 import unittest
-from espn import app
-from espn.league import League
-from espn.season import Season
+from fantasy import app
+from fantasy.league import League
+from fantasy.season import Season
 
 
 class TestRegularSeasonPages(unittest.TestCase):
