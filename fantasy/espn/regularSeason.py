@@ -1,5 +1,4 @@
 import requests
-from flask import jsonify
 
 
 def get_one_season_data(year, league):

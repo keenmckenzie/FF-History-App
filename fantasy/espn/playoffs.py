@@ -1,6 +1,5 @@
 import requests
-from espn.season import Season
-
+from fantasy.season import Season
 
 def get_postseason_performance(league):
     postseason_record = {}
