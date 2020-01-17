@@ -7,6 +7,9 @@ from fantasy.league import League
 
 mod = Blueprint('espn', __name__)
 
+@mod.route('/test')
+def test():
+    return {'result': 'Test'}
 
 @mod.route('/regular-season/<int:league_id>', methods=['GET'])
 def getAlltime(league_id):

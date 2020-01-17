@@ -14,6 +14,6 @@ def auth(response):
    yahoo = OAuth2Session(client_id, redirect_uri=redirect_uri)
    token_url = 'https://api.login.yahoo.com/oauth2/get_token'
    yahoo.fetch_token(token_url, client_secret=client_secret, authorization_response=response)
-   r = yahoo.get('https://fantasysports.yahooapis.com/fantasy/v2/league/223.l.431/standings')
+   r = yahoo.get('https://fantasysports.yahooapis.com/fantasy/v2/league/nfl.l.47873/standings')
    print(r.content)
    return r
