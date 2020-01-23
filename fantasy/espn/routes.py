@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, render_template
 
 from fantasy.espn.alltime import get_alltime
 from fantasy.espn.playoffs import get_postseason_performance
@@ -7,9 +7,11 @@ from fantasy.league import League
 
 mod = Blueprint('espn', __name__)
 
+
 @mod.route('/test')
 def test():
-    return {'result': 'Test'}
+    return render_template('index.html')
+
 
 @mod.route('/regular-season/<int:league_id>', methods=['GET'])
 def getAlltime(league_id):
