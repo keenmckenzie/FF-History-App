@@ -1,9 +1,42 @@
 <html>
 <head>
-    <link rel='icon' href='favicon.ico' type='image/x-icon'/ >
+    <link rel='icon' href='favicon.ico' type='image/x-icon' > </link>
 </head>
+<style>
+    .nav-ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    .nav-li {
+      float: left;
+    }
+
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    /* Change the link color to #111 (black) on hover */
+    li a:hover {
+      background-color: #111;
+    }
+
+</style>
 <body>
-<h1>Fantasy Football History</h1>
-<p>Historical fantasy football data coming soon<p>
+<div>
+    <ul class="nav-ul">
+        <li class="nav-li"><a href="https://localhost:5000/espn/test">Home</a></li>
+        <li class="nav-li"><a href="https://localhost:5000/espn/performance/1107328">League History</a></li>
+        <li class="nav-li"><a href="https://localhost:5000/espn/test">Contact</a></li>
+        <li class="nav-li"><a href="https://localhost:5000/espn/test">About</a></li>
+    </ul>
+</div>
 </body>
 </html>
