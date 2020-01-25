@@ -1,8 +1,8 @@
 <!doctype html>
-<html>
+<html><!-- InstanceBegin template="/Templates/template_1.dwt" codeOutsideHTMLIsLocked="false" -->
 <head>
 <meta charset="utf-8">
-<title>Home</title>
+<title>League History</title>
 	<style>
 		.nav-bar{
 			list-style-type: none;
@@ -36,15 +36,29 @@
 
 <body>
 	<div>
-		<h2 class="header"> Fantasy Football History </h2>
+	  <h2 class="header"> Fantasy Football History </h2>
 	</div>
 	<div>
-		<ul class="nav-bar">
+	  <ul class="nav-bar">
 			<li class="nav-bar-item"> <a class="nav-link" href="https://localhost:5000/espn/test"> Home</a></li>
-			<li class="nav-bar-item"> <a class="nav-link" href="history"> League History</a></li>
+			<li class="nav-bar-item"> <a class="nav-link" href="https://localhost:5000/espn/test"> League History</a></li>
 			<li class="nav-bar-item"> <a class="nav-link" href="https://localhost:5000/espn/test"> About</a></li>
 			<li class="nav-bar-item"> <a class="nav-link" href="https://localhost:5000/espn/test"> Contact</a></li>
 		</ul>
 	</div>
+	<div><!-- InstanceBeginEditable name="Body" -->
+		<p>
+		Insert Site (ESPN or Yahoo) and League ID below to pull historical league data.
+		</p>
+		<form action="https://localhost:5000/espn/league-history"> 	Site:<br>
+	   	  <input type="text" name="site"><br>
+			   	League ID:<br>
+			   	<input type="number" name="leagueId"><br>
+		  <input style="margin-top: 5px" type="submit" value="Submit">
+		</form>
+		
+		<!-- InstanceEndEditable -->
+	
+	</div>
 </body>
-</html>
+<!-- InstanceEnd --></html>
