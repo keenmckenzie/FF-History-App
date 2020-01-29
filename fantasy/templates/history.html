@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>The Record Book Home</title>
+	<style>
+		.nav-bar{
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			background-color: #333;
+		}
+		.nav-bar-item{
+			float: left;
+		}
+		.nav-link{
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+		.nav-link:hover{
+			background-color: #111;
+		}
+		.header{
+			background-color: #333;
+			text-align: center;
+			padding: 20px;
+			margin-bottom: 0;
+			color: white;
+		}
+	</style>
+</head>
+
+<body>
+	<div>
+		<h2 class="header"> The Record Book</h2>
+	</div>
+	<div>
+		<ul class="nav-bar">
+			<li class="nav-bar-item"> <a class="nav-link" href="home"> Home</a></li>
+			<li class="nav-bar-item"> <a class="nav-link" href="history"> League History</a></li>
+			<li class="nav-bar-item"> <a class="nav-link" href="contact"> Contact</a></li>
+		</ul>
+	</div>
+	<div class="body">
+		<h2>Welcome to The Record Book!</h2>
+		<p> Fantasy football history and stats features will be added over time to help definitively answer the age old question: <b>Who is the best fantasy football owner in your league?</b></p>
+	</div>
+	<div id="box">
+
+	</div>
+</body>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.js"></script>
+<script type="mustache/x-temp" id="testTemp">
+<h2> {{name}} </h2>
+</script>
+
+<script type="text/javascript">
+var data = [
+		{name: "Keenan"},
+		{name: "Jake"},
+		{name: "Mike"}
+	   ]
+var tmpl = document.getElementById("testTemp").innerHTML;
+for (var name in data) {
+
+var html = Mustache.to_html(tmpl, data[name]);
+
+var box = document.getElementById("box")
+box.innerHTML += html
+}
+
+</script>
+</html>
