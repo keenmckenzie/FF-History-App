@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+	<style>
+		.nav-bar{
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			background-color: #333;
+		}
+		.nav-bar-item{
+			float: left;
+		}
+		.nav-link{
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+		.nav-link:hover{
+			background-color: #111;
+		}
+		.header{
+			background-color: #333;
+			text-align: center;
+			padding: 20px;
+			margin-bottom: 0;
+			color: white;
+		}
+	</style>
+</head>
+
+<body>
+	<div>
+	  <h2 class="header"> Fantasy Football History </h2>
+	</div>
+	<div>
+	  <ul class="nav-bar">
+			<li class="nav-bar-item"> <a class="nav-link" href="https://localhost:5000/espn/test"> Home</a></li>
+			<li class="nav-bar-item"> <a class="nav-link" href="https://localhost:5000/espn/test"> League History</a></li>
+			<li class="nav-bar-item"> <a class="nav-link" href="https://localhost:5000/espn/test"> About</a></li>
+			<li class="nav-bar-item"> <a class="nav-link" href="https://localhost:5000/espn/test"> Contact</a></li>
+		</ul>
+	</div>
+	<div><!-- TemplateBeginEditable name="Body" -->Body<!-- TemplateEndEditable -->
+	
+	</div>
+</body>
+</html>

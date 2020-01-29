@@ -1,0 +1,63 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/template_1.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta charset="utf-8">
+<title>League History</title>
+	<style>
+		.nav-bar{
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			background-color: #333;
+		}
+		.nav-bar-item{
+			float: left;
+		}
+		.nav-link{
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+		.nav-link:hover{
+			background-color: #111;
+		}
+		.header{
+			background-color: #333;
+			text-align: center;
+			padding: 20px;
+			margin-bottom: 0;
+			color: white;
+		}
+	</style>
+</head>
+
+<body>
+	<div>
+	  <h2 class="header"> The Record Book </h2>
+	</div>
+	<div>
+	  <ul class="nav-bar">
+			<li class="nav-bar-item"> <a class="nav-link" href="https://localhost:5000/espn/home"> Home</a></li>
+			<li class="nav-bar-item"> <a class="nav-link" href="history"> League History</a></li>
+			<li class="nav-bar-item"> <a class="nav-link" href="contact"> Contact</a></li>
+		</ul>
+	</div>
+	<div><!-- InstanceBeginEditable name="Body" -->
+		<p>
+		Insert Site (ESPN or Yahoo) and League ID below to pull historical league data.
+		</p>
+		<form action="https://localhost:5000/espn/league-history"> 	Site:<br>
+	   	  <input type="text" name="site"><br>
+			   	League ID:<br>
+			   	<input type="number" name="leagueId"><br>
+		  <input style="margin-top: 5px" type="submit" value="Submit">
+		</form>
+		
+		<!-- InstanceEndEditable -->
+	
+	</div>
+</body>
+<!-- InstanceEnd --></html>
