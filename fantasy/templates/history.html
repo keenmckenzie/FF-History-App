@@ -31,6 +31,21 @@
 			margin-bottom: 0;
 			color: white;
 		}
+		table {
+		  font-family: arial, sans-serif;
+		  border-collapse: collapse;
+		  width: 100%;
+		}
+
+		td, th {
+		  border: 1px solid #dddddd;
+		  text-align: left;
+		  padding: 8px;
+		}
+
+		tr:nth-child(even) {
+		  background-color: #dddddd;
+		}
 	</style>
 </head>
 
@@ -46,7 +61,7 @@
 		</ul>
 	</div>
 	<div class="results-header">
-		<h3> Alltime League History</h3>
+		<h3> League History</h3>
 	</div>
 	<div id="box"></div>
 
@@ -72,16 +87,37 @@
   {% endraw %}
 </script>
 
+<script type="mustache/x-temp" id="tableTemp">
+  <table>
+    <tr>
+      <th> Owner </th>
+      <th> Wins </th>
+      <th> Losses </th>
+      <th> Championships </th>
+    </tr>
+  {% raw %}
+  <ul>
+  {{#owners}}
+    <tr>
+      <td> {{name}} </td>
+      <td> {{wins}} </td>
+      <td> {{losses}} </td>
+      <td> {{championships}} </td>
+    </tr>
+  {{/owners}}
+  </table>
+  {% endraw %}
+</script>
+
 <script type="text/javascript">
-var testUrl = 'https://localhost:5000/espn/league-history?leagueId=1107328';
 var currentUrl = window.location.href
 var leagueIdIndex = currentUrl.indexOf("leagueId");
 var leagueId = currentUrl.slice(leagueIdIndex+9);
-var requestUrl = 'https://localhost:5000/espn/league-history?leagueId=' + leagueId;
+var requestUrl = 'http://localhost:5000/espn/league-history?leagueId=' + leagueId;
 $(function() {
 
   $.getJSON(requestUrl, function(result){
-    var template = $('#testTemp').html();
+    var template = $('#tableTemp').html();
     var html = Mustache.render(template, result);
     $('#box').html(html);
   });
