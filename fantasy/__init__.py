@@ -1,8 +1,10 @@
 from flask import Flask
+from flask_cors import CORS
 
 from fantasy import yahoo, espn
 
 app = Flask(__name__)
+cors=CORS(app, resources={r"/*": {"origins": ["https://localhost*"]}})
 
 from fantasy.yahoo.routes import mod
 from fantasy.espn.routes import mod
