@@ -31,6 +31,21 @@
 			margin-bottom: 0;
 			color: white;
 		}
+		table {
+		  font-family: arial, sans-serif;
+		  border-collapse: collapse;
+		  width: 100%;
+		}
+
+		td, th {
+		  border: 1px solid #dddddd;
+		  text-align: left;
+		  padding: 8px;
+		}
+
+		tr:nth-child(even) {
+		  background-color: #dddddd;
+		}
 	</style>
 </head>
 
@@ -45,33 +60,70 @@
 			<li class="nav-bar-item"> <a class="nav-link" href="contact"> Contact</a></li>
 		</ul>
 	</div>
-	<div class="body">
-		<h2>Welcome to The Record Book!</h2>
-		<p> Fantasy football history and stats features will be added over time to help definitively answer the age old question: <b>Who is the best fantasy football owner in your league?</b></p>
+	<div class="results-header">
+		<h3> League History</h3>
 	</div>
-	<div id="box">
+	<div id="box"></div>
 
-	</div>
 </body>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.js"></script>
 <script type="mustache/x-temp" id="testTemp">
-<h2> {{name}} </h2>
+  {% raw %}
+  <ul>
+  {{#owners}}
+    <div class="owner">
+      <li> {{name}} </li>
+        <ul>
+          <li> Wins: {{wins}} </li>
+          <li> Losses: {{losses}} </li>
+          <li> Years Active: {{yearsActive}} </li>
+          <li> {{championships}}x Champ </li>
+        </ul
+    </div>
+  {{/owners}}
+  </ul>
+  {% endraw %}
+</script>
+
+<script type="mustache/x-temp" id="tableTemp">
+  <table>
+    <tr>
+      <th> Owner </th>
+      <th> Wins </th>
+      <th> Losses </th>
+      <th> Championships </th>
+    </tr>
+  {% raw %}
+  <ul>
+  {{#owners}}
+    <tr>
+      <td> {{name}} </td>
+      <td> {{wins}} </td>
+      <td> {{losses}} </td>
+      <td> {{championships}} </td>
+    </tr>
+  {{/owners}}
+  </table>
+  {% endraw %}
 </script>
 
 <script type="text/javascript">
-var data = [
-		{name: "Keenan"},
-		{name: "Jake"},
-		{name: "Mike"}
-	   ]
-var tmpl = document.getElementById("testTemp").innerHTML;
-for (var name in data) {
+var currentUrl = window.location.href
+var leagueIdIndex = currentUrl.indexOf("leagueId");
+var leagueId = currentUrl.slice(leagueIdIndex+9);
+var requestUrl = 'http://localhost:5000/espn/league-history?leagueId=' + leagueId;
+$(function() {
 
-var html = Mustache.to_html(tmpl, data[name]);
+  $.getJSON(requestUrl, function(result){
+    var template = $('#tableTemp').html();
+    var html = Mustache.render(template, result);
+    $('#box').html(html);
+  });
 
-var box = document.getElementById("box")
-box.innerHTML += html
-}
+});
 
 </script>
+
 </html>

@@ -34,6 +34,10 @@ class TestAllTimePages(unittest.TestCase):
         response = self.app.get("/espn/performance/1107328", follow_redirects=True)
         self.assertEqual(response.status_code, 200)
 
+    def test_history(self):
+        response = self.app.get("/espn/league-history?leagueId=1107328", follow_redirects=True)
+        self.assertEqual(response.status_code, 200)
+
 
 class TestLeagueObject(unittest.TestCase):
 
