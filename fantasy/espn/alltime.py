@@ -34,6 +34,7 @@ def get_alltime_map(league_id):
         alltime_list.append(alltime_performance[owner])
     return {'owners': alltime_performance}
 
+
 def get_alltime_list(league_id):
     league = League(league_id)
     alltime_performance = {}
