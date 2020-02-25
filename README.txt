@@ -1,3 +1,5 @@
+Application to pull historical fantasy football league data from the espn fantasy football API
+
 To RUN:
 
 1) Create virtual environment:
