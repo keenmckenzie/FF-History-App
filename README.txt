@@ -14,7 +14,7 @@ $ pip install -r requirements.txt
 4) Run:
 $ python3 run.py
 
-5) Go to https://localhost:5000/espn/performance/1107328 & https://localhost:5000/espn/regular-season/1107328
+5) Go to https://localhost:5000/espn/home
 
 
 TO TEST:
