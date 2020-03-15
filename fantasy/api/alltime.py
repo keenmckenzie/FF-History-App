@@ -1,7 +1,7 @@
 import requests
 from fantasy.league import League
-from fantasy.espn.playoffs import get_postseason_performance
-from fantasy.espn.regularSeason import get_all_season_data
+from fantasy.api.playoffs import get_postseason_performance
+from fantasy.api.regularSeason import get_all_season_data
 
 
 def get_alltime_map(league_id):
@@ -23,10 +23,10 @@ def get_alltime_map(league_id):
 
         except KeyError:
             alltime_performance[owner] = {
-               "name": regular_season[owner]['name'],
-               "wins": regular_season[owner]['wins'],
-               "losses":regular_season[owner]['losses'],
-               "yearsActive": regular_season[owner]['yearsActive']
+                "name": regular_season[owner]['name'],
+                "wins": regular_season[owner]['wins'],
+                "losses": regular_season[owner]['losses'],
+                "yearsActive": regular_season[owner]['yearsActive']
             }
             ##print("No postseason data for: " + regular_season[owner]['name'])
 
@@ -55,11 +55,11 @@ def get_alltime_list(league_id):
 
         except KeyError:
             alltime_performance[owner] = {
-               "name": regular_season[owner]['name'],
-               "wins": regular_season[owner]['wins'],
-               "losses":regular_season[owner]['losses'],
-               "yearsActive": regular_season[owner]['yearsActive'],
-               "championships": regular_season[owner]['championships']
+                "name": regular_season[owner]['name'],
+                "wins": regular_season[owner]['wins'],
+                "losses": regular_season[owner]['losses'],
+                "yearsActive": regular_season[owner]['yearsActive'],
+                "championships": regular_season[owner]['championships']
             }
             ##print("No postseason data for: " + regular_season[owner]['name'])
 
