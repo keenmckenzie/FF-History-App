@@ -9,11 +9,11 @@ class TestRegularSeasonPages(unittest.TestCase):
         self.app = app.test_client()
 
     def test_performance(self):
-        response = self.app.get("/espn/regular-season/1107328", follow_redirects=True)
+        response = self.app.get("/api/regular-season/1107328", follow_redirects=True)
         self.assertEqual(response.status_code, 200)
 
     def test_records(self):
-        response = self.app.get("/espn/records/1107328", follow_redirects=True)
+        response = self.app.get("/api/records/1107328", follow_redirects=True)
         self.assertEqual(response.status_code, 200)
 
 
@@ -22,7 +22,7 @@ class TestPostSeasonPages(unittest.TestCase):
         self.app = app.test_client()
 
     def test_performance(self):
-        response = self.app.get('espn/playoffs/1107328', follow_redirects=True)
+        response = self.app.get('api/playoffs/1107328', follow_redirects=True)
         self.assertEqual(response.status_code, 200)
 
 
@@ -31,11 +31,11 @@ class TestAllTimePages(unittest.TestCase):
         self.app = app.test_client()
 
     def test_performance(self):
-        response = self.app.get("/espn/performance/1107328", follow_redirects=True)
+        response = self.app.get("/api/performance/1107328", follow_redirects=True)
         self.assertEqual(response.status_code, 200)
 
     def test_history(self):
-        response = self.app.get("/espn/league-history?leagueId=1107328", follow_redirects=True)
+        response = self.app.get("/api/league-history?leagueId=1107328", follow_redirects=True)
         self.assertEqual(response.status_code, 200)
 
 

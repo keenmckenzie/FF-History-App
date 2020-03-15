@@ -55,7 +55,7 @@
 	</div>
 	<div>
 		<ul class="nav-bar">
-			<li class="nav-bar-item"> <a class="nav-link" href="home"> Home</a></li>
+			<li class="nav-bar-item"> <a class="nav-link" href="index"> Home</a></li>
 			<li class="nav-bar-item"> <a class="nav-link" href="history"> League History</a></li>
 			<li class="nav-bar-item"> <a class="nav-link" href="contact"> Contact</a></li>
 		</ul>
@@ -113,7 +113,7 @@
 var currentUrl = window.location.href
 var leagueIdIndex = currentUrl.indexOf("leagueId");
 var leagueId = currentUrl.slice(leagueIdIndex+9);
-var requestUrl = 'http://localhost:5000/espn/league-history?leagueId=' + leagueId;
+var requestUrl = 'http://localhost:5000/api/league-history?leagueId=' + leagueId;
 $(function() {
 
   $.getJSON(requestUrl, function(result){
