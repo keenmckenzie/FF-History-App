@@ -7,22 +7,6 @@ from fantasy.league import League
 
 mod = Blueprint('api', __name__)
 
-'''
-@mod.route('/home')
-def test():
-    return render_template('index.html')
-
-
-@mod.route('/contact')
-def contact():
-    return render_template('contact.html')
-
-
-@mod.route('/history')
-def leagueHistoryForm():
-    return render_template('league_history_form.html')
-'''
-
 
 @mod.route('/regular-season/<int:league_id>', methods=['GET'])
 def getAlltime(league_id):
@@ -64,10 +48,3 @@ def get_league_history():
     print(league_id)
     alltime_data = get_alltime_list(league_id)
     return alltime_data
-
-
-'''
-@mod.route('league-info')
-def get_league_info():
-    return render_template('history.html')
-'''
