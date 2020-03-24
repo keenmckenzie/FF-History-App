@@ -12,10 +12,10 @@ class League:
         self.seasons = {}
 
         def get_years_active():
-            url = "https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/" + str(league_id) + "?seasonId=2018"
+            url = "https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/" + str(league_id) + "?seasonId=2019"
             team_view_json = requests.get(url, params={"view": "mTeam"}).json()[0]
             years = team_view_json['status']['previousSeasons']
-            years.append(2018)
+            years.append(2019)
             return years
 
         self.years = get_years_active()
